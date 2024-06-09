@@ -3,17 +3,26 @@ import styles from "./MenuItem.module.scss";
 import Button from "../Button";
 
 interface Props {
+  onClick?: () => void;
   data: {
     title: string;
     icon: any;
     to?: string;
+    separate?: boolean;
   };
 }
 const cx = classNames.bind(styles);
 
-const MenuItem = ({ data }: Props) => {
+const MenuItem = ({ data, onClick }: Props) => {
   return (
-    <Button className={cx("menu-item")} leftIcon={data.icon} to={data.to}>
+    <Button
+      className={cx("menu-item", {
+        separate: data.separate,
+      })}
+      leftIcon={data.icon}
+      to={data.to}
+      onClick={onClick}
+    >
       {data.title}
     </Button>
   );

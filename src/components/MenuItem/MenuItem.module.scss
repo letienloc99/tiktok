@@ -9,3 +9,8 @@
     background-color: rgba(22, 24, 35, 0.03);
   }
 }
+.separate {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
