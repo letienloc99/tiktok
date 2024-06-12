@@ -2,24 +2,26 @@ import classNames from "classnames/bind";
 import styles from "./AccountItem.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-
+import { Link } from "react-router-dom";
+import { ISearch } from "../../api/models/search";
+interface Props {
+  data: ISearch;
+}
 const cx = classNames.bind(styles);
-const AccountItem = () => {
+const AccountItem = ({ data }: Props) => {
   return (
-    <div className={cx("wrapper")}>
-      <img
-        src="https://gcs.tripi.vn/public-tripi/tripi-feed/img/474070rNU/anh-avatar-goku-ban-nang-vo-cuc_011149230.jpg"
-        alt=""
-        className={cx("avatar")}
-      />
+    <Link to={`/${data.nickname}`} className={cx("wrapper")}>
+      <img src={data.avatar} alt={data.full_name} className={cx("avatar")} />
       <div className={cx("info")}>
         <h4 className={cx("name")}>
-          <span>Le Tien Loc</span>
-          <FontAwesomeIcon icon={faCheckCircle} className={cx("check")} />
+          <span>{data.full_name}</span>
+          {data.tick && (
+            <FontAwesomeIcon icon={faCheckCircle} className={cx("check")} />
+          )}
         </h4>
-        <span className={cx("username")}>Letienloc</span>
+        <span className={cx("username")}>{data.nickname}</span>
       </div>
-    </div>
+    </Link>
   );
 };
 

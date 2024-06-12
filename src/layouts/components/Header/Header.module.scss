@@ -1,0 +1,57 @@
+.wrapper {
+  --border-radius-search: 92px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: var(--default-layout-header-hight);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
+  background-color: var(--white);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.action {
+  display: flex;
+  align-items: center;
+}
+.action-btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 2.2rem;
+  color: #161823;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+.contents {
+  width: 224px;
+}
+.menu-body {
+  overflow-y: overlay;
+}
+.more-btn {
+  font-size: 2rem;
+  margin-left: 15px;
+  padding: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}

@@ -1,12 +1,11 @@
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
-import logo from "../../../../assets/imgaes/logo.svg";
+import logo from "../../../assets/imgaes/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBookmark,
   faCircleHalfStroke,
   faCircleQuestion,
-  faCircleXmark,
   faEarthAsia,
   faEllipsisVertical,
   faFloppyDisk,
@@ -15,21 +14,20 @@ import {
   faMessage,
   faPaperPlane,
   faPlus,
-  faSearch,
   faSignOut,
-  faSpinner,
   faUser,
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import HeadlessTippy from "@tippyjs/react/headless";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import { useEffect, useState } from "react";
-import { Wrapper as PopperWrapper } from "../../../Popper";
-import AccountItem from "../../../AccountItem";
-import Button from "../../../Button";
-import MenuItem from "../../../MenuItem";
-import HeaderMenu from "../../../MenuLanguage/HeaderMenu";
+import { useState } from "react";
+import { Wrapper as PopperWrapper } from "../../../components/Popper";
+import SearchHeader from "../Search";
+import { Link } from "react-router-dom";
+import Button from "../../../components/Button";
+import HeaderMenu from "../../../components/MenuLanguage/HeaderMenu";
+import MenuItem from "../../../components/MenuItem";
 interface MenuItemType {
   icon: JSX.Element;
   title: string;
@@ -42,8 +40,7 @@ interface MenuItemType {
 }
 const cx = classNames.bind(styles);
 const Header = () => {
-  const user = true;
-  const [searchResult, setSearchResult] = useState<Array<string | number>>([]);
+  const user = false;
   const dataMenuItem: MenuItemType[] = [
     {
       icon: <FontAwesomeIcon icon={faEarthAsia} />,
@@ -118,42 +115,14 @@ const Header = () => {
   }) => {
     console.log(menuItem);
   };
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([1, 2, 3]);
-    }, 0);
-  }, []);
+
   return (
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
-        <div className={cx("logo")}>
+        <Link to="/" className={cx("logo")}>
           <img src={logo} alt="Tiktok" />
-        </div>
-        <HeadlessTippy
-          interactive={true}
-          visible={searchResult.length > 0}
-          render={(attrs) => (
-            <div className={cx("search-result")} tabIndex={1} {...attrs}>
-              <PopperWrapper>
-                <h4 className={cx("search-title")}>Accounts</h4>
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-              </PopperWrapper>
-            </div>
-          )}
-        >
-          <div className={cx("search")}>
-            <input placeholder="Search accounts and video" />
-            <button className={cx("clear")}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-            <FontAwesomeIcon icon={faSpinner} className={cx("loading")} />
-            <button className={cx("search-btn")}>
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
-          </div>
-        </HeadlessTippy>
+        </Link>
+        <SearchHeader />
         <div className={cx("action")}>
           <Button border leftIcon={<FontAwesomeIcon icon={faPlus} />}>
             Upload
@@ -181,6 +150,7 @@ const Header = () => {
             placement="bottom-end"
             delay={[0, 700]}
             offset={[12, 8]}
+            hideOnClick={false}
             onHide={() => {
               setHistory((prev) => prev.slice(0, 1));
             }}
@@ -195,22 +165,27 @@ const Header = () => {
                       }}
                     />
                   )}
-                  {current.data.map((item, index) => {
-                    const isParent = !!item.children;
-                    return (
-                      <MenuItem
-                        key={index}
-                        data={item}
-                        onClick={() => {
-                          if (isParent) {
-                            setHistory((prev: any) => [...prev, item.children]);
-                          } else {
-                            handleChange(item);
-                          }
-                        }}
-                      />
-                    );
-                  })}
+                  <div className={cx("menu-body")}>
+                    {current.data.map((item, index) => {
+                      const isParent = !!item.children;
+                      return (
+                        <MenuItem
+                          key={index}
+                          data={item}
+                          onClick={() => {
+                            if (isParent) {
+                              setHistory((prev: any) => [
+                                ...prev,
+                                item.children,
+                              ]);
+                            } else {
+                              handleChange(item);
+                            }
+                          }}
+                        />
+                      );
+                    })}
+                  </div>
                 </PopperWrapper>
               </div>
             )}

@@ -8,14 +8,14 @@ interface Props {
   href?: string;
   onClick?: () => void;
   children: ReactNode;
-  primary?: any;
-  outline?: any;
+  primary: boolean;
+  outline: boolean;
   passProps?: any;
-  small?: any;
-  large?: any;
-  border?: any;
-  leftIcon?: any;
-  rightIcon?: any;
+  small: boolean;
+  large: boolean;
+  border: boolean;
+  leftIcon: boolean;
+  rightIcon: boolean;
   className?: any;
 }
 const Button = ({
