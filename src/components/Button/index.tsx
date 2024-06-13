@@ -7,15 +7,15 @@ interface Props {
   to?: string;
   href?: string;
   onClick?: () => void;
-  children: ReactNode;
-  primary: boolean;
-  outline: boolean;
+  children?: ReactNode;
+  primary?: any;
+  outline?: any;
   passProps?: any;
-  small: boolean;
-  large: boolean;
-  border: boolean;
-  leftIcon: boolean;
-  rightIcon: boolean;
+  small?: any;
+  large?: any;
+  border?: any;
+  leftIcon?: any;
+  rightIcon?: any;
   className?: any;
 }
 const Button = ({

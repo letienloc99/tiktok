@@ -1,10 +1,10 @@
-import Home from "../Home";
-import Following from "../Following";
-import Profile from "../Profile";
-import Upload from "../Upload";
-import Search from "../Search";
-import HeaderOnly from "../../layouts/HeaderOnly";
-import Live from "../Live";
+import Home from "../Pages/Home";
+import Following from "../Pages/Following";
+import Profile from "../Pages/Profile";
+import Upload from "../Pages/Upload";
+import Search from "../Pages/Search";
+import HeaderOnly from "../layouts/HeaderOnly";
+import Live from "../Pages/Live";
 const publicRouter = [
   {
     path: "/",
@@ -15,7 +15,7 @@ const publicRouter = [
     component: Following,
   },
   {
-    path: "/:nickname",
+    path: "/user/:nickname",
     component: Profile,
   },
   {
