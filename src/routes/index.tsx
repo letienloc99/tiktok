@@ -5,6 +5,7 @@ import Upload from "../Pages/Upload";
 import Search from "../Pages/Search";
 import HeaderOnly from "../layouts/HeaderOnly";
 import Live from "../Pages/Live";
+import NotFound from "../Pages/404";
 const publicRouter = [
   {
     path: "/",
@@ -31,6 +32,11 @@ const publicRouter = [
   {
     path: "/live",
     component: Live,
+  },
+  {
+    path: "/error",
+    component: NotFound,
+    layout: HeaderOnly,
   },
 ];
 

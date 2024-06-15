@@ -6,6 +6,8 @@ import {
   EmbedIcon,
   FacebookIcon,
   MenuIcon,
+  ReportIcon,
+  SendMessageIcon,
   ShareIcon,
   TwitterIcon,
   WhatAppIcon,
@@ -13,7 +15,7 @@ import {
 import { Wrapper as PopperWrapper } from "../../../../components/Popper";
 import ActionItem from "./ActionItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faBan, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 const cx = classNames.bind(styles);
 const shareMenu = [
@@ -46,6 +48,11 @@ const shareMenu = [
     title: "Share to Telegram",
   },
 ];
+const moreMenu = [
+  { title: "Send Message", icon: <SendMessageIcon /> },
+  { title: "Report", icon: <ReportIcon /> },
+  { title: "Block", icon: <FontAwesomeIcon icon={faBan} /> },
+];
 const ActionHeader = () => {
   const [showAll, setShowAll] = useState<boolean>(false);
   const handleShowAll = () => {
@@ -57,7 +64,7 @@ const ActionHeader = () => {
         interactive={true}
         placement="bottom"
         delay={[0, 500]}
-        offset={[-100, -165]}
+        offset={[-100, -15]}
         onHide={() => {
           setShowAll(false);
           shareMenu.slice(0, 5);
@@ -91,9 +98,31 @@ const ActionHeader = () => {
           <ShareIcon />
         </div>
       </HeadlessTippy>
-      <div className={cx("menu-btn")}>
-        <MenuIcon />
-      </div>
+      <HeadlessTippy
+        interactive={true}
+        placement="bottom"
+        delay={[0, 500]}
+        offset={[-70, -15]}
+        onHide={() => {
+          setShowAll(false);
+          shareMenu.slice(0, 5);
+        }}
+        render={(attrs) => (
+          <div className={cx("more-menu")} tabIndex={1} {...attrs}>
+            <PopperWrapper>
+              <>
+                {moreMenu.map((item, index) => (
+                  <ActionItem key={index} title={item.title} icon={item.icon} />
+                ))}
+              </>
+            </PopperWrapper>
+          </div>
+        )}
+      >
+        <div className={cx("menu-btn")}>
+          <MenuIcon />
+        </div>
+      </HeadlessTippy>
     </div>
   );
 };

@@ -6,7 +6,14 @@
   min-height: calc(-59px + 100vh);
   margin: 0px auto;
   box-sizing: content-box;
+  overflow-y: overlay;
+}
+.loading-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
 }
 .header {
   display: flex;
+  margin-bottom: 20px;
 }
