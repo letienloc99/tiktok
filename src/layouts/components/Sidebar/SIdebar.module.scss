@@ -1,8 +1,11 @@
 .wrapper {
   width: 356px;
+  height: calc(100vh - var(--default-layout-header-hight));
+  overflow-y: hidden;
+  position: fixed;
+  left: 0;
+  top: 60px;
   padding: 20px 0px 26px 8px;
-  max-height: 700px;
-  overflow: hidden;
   transition: overflow 0.3s;
 }
 .wrapper.show-scroll {

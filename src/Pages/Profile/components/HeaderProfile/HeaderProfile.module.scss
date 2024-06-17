@@ -91,6 +91,7 @@
   text-decoration: none;
   margin-top: 5px;
   border-bottom: 1px solid transparent;
+  width: fit-content;
   &:hover {
     border-bottom-color: var(--primary);
   }

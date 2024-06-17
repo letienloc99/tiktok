@@ -27,15 +27,6 @@ const VideoItem = ({ data }: Props) => {
           muted={false}
           volume={0}
           loop={true}
-          light={
-            !playing && (
-              <img
-                src={data.thumb_url}
-                alt="Thumbnail"
-                className={cx("thumb-video")}
-              />
-            )
-          }
           playIcon={<div />}
         />
       </div>
