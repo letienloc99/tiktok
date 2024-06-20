@@ -4,11 +4,17 @@
   padding: 20px 0;
   border-bottom: 1px solid #e7e7e9;
 }
+
 .wrapper-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.header-left {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px;
 }
 .avt-header {
   width: 56px;
@@ -51,7 +57,7 @@
 .follow-btn {
   width: 96px;
   height: 36px;
-  margin-top: -10px;
+  margin-top: -15px;
 }
 .video-content {
   display: flex;
