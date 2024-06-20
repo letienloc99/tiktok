@@ -375,3 +375,61 @@ export const ViewIcon = ({ width = "1.8rem", height = "1.8rem " }) => (
     ></path>
   </svg>
 );
+export const LikeIcon = ({ width = "20", height = "20", className = "" }) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      className={className}
+      viewBox="0 0 48 48"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M24 9.01703C19.0025 3.74266 11.4674 3.736 6.67302 8.56049C1.77566 13.4886 1.77566 21.4735 6.67302 26.4016L22.5814 42.4098C22.9568 42.7876 23.4674 43 24 43C24.5326 43 25.0432 42.7876 25.4186 42.4098L41.327 26.4016C46.2243 21.4735 46.2243 13.4886 41.327 8.56049C36.5326 3.736 28.9975 3.74266 24 9.01703ZM21.4938 12.2118C17.9849 8.07195 12.7825 8.08727 9.51028 11.3801C6.16324 14.7481 6.16324 20.214 9.51028 23.582L24 38.1627L38.4897 23.582C41.8368 20.214 41.8368 14.7481 38.4897 11.3801C35.2175 8.08727 30.0151 8.07195 26.5062 12.2118L26.455 12.2722L25.4186 13.3151C25.0432 13.6929 24.5326 13.9053 24 13.9053C23.4674 13.9053 22.9568 13.6929 22.5814 13.3151L21.545 12.2722L21.4938 12.2118Z"
+      ></path>
+    </svg>
+  );
+};
+export const CommentIcon = ({
+  width = "24",
+  height = "24",
+  className = "",
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    className={className}
+    height={height}
+    fill="currentColor"
+  >
+    <symbol
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+      id="Bubble_Ellipsis_Right_Fill-a497dc09"
+    >
+      <path d="M3.5 21.44C3.5 11.47 13.04 4 24 4s20.5 7.47 20.5 17.44c0 5.85-2.93 10.69-6.47 14.37a41.67 41.67 0 0 1-11.06 7.97A2.05 2.05 0 0 1 24 41.95v-3.08c-10.96 0-20.5-7.47-20.5-17.43Zm11.79 3.07a2.56 2.56 0 1 0 0-5.12 2.56 2.56 0 0 0 0 5.12Zm8.71 0a2.56 2.56 0 1 0 0-5.12 2.56 2.56 0 0 0 0 5.12Zm11.27-2.56a2.56 2.56 0 1 0-5.12 0 2.56 2.56 0 0 0 5.12 0Z"></path>
+    </symbol>
+  </svg>
+);
+
+export const FavoriteIcon = ({
+  width = "30",
+  height = "30",
+  className = "",
+}) => (
+  <svg
+    width={width}
+    height={height}
+    className={className}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill="CurrentColor"
+      d="M6 19.5V5.615q0-.69.463-1.152Q6.925 4 7.615 4h8.77q.69 0 1.152.463q.463.462.463 1.152V19.5l-6-2.577L6 19.5Z"
+    ></path>
+  </svg>
+);

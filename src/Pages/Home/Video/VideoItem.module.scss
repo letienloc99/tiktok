@@ -1,28 +1,82 @@
 .wrapper {
+  width: 592px;
+  max-width: 592px;
+  padding: 20px 0;
+  border-bottom: 1px solid #e7e7e9;
+}
+.wrapper-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.avt-header {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.content-header {
+}
+.content-username {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #161823;
+
+  h3 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    margin-right: 4px;
+  }
+  h4 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+  }
+}
+.description-header {
+  font-size: 16px;
+  line-height: 21px;
+  word-break: break-word;
+}
+.music-header {
+  display: flex;
+  align-items: center;
+  span {
+    margin-left: 3px;
+  }
+}
+.follow-btn {
+  width: 96px;
+  height: 36px;
+  margin-top: -10px;
+}
+.video-content {
+  display: flex;
   position: relative;
-  width: 100%;
-  margin: auto;
-  width: 290px;
-  height: 517px;
-  background-color: #111;
+  height: 394px;
+  width: 524px;
   border-radius: 10px;
+  margin-left: 56px;
 }
 
 .video {
   position: relative;
-  width: 100%;
-  height: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 10px;
   overflow: hidden;
+  margin-right: 20px;
 }
 
 .content {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #111;
-  padding: 10px;
+  bottom: 15px;
+  left: 10px;
+  right: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,4 +121,44 @@
   border-radius: 50%;
   background-color: white;
   transform: translateX(-50%);
+}
+.menu-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.action-icon {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex-direction: column;
+  .icon-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(22, 24, 35, 0.06);
+    margin-top: 8px;
+    margin-bottom: 6px;
+    .icon {
+      width: 21px;
+      height: 19px;
+    }
+  }
+  p {
+    color: rgba(22, 24, 35, 0.75);
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+  }
 }

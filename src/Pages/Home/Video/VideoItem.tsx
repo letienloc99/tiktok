@@ -9,6 +9,8 @@ import {
   faVolumeDown,
   faVolumeMute,
 } from "@fortawesome/free-solid-svg-icons";
+import ActionVideo from "./ActionVideo";
+import HeaderVideo from "./HeaderVideo";
 
 const cx = classNames.bind(styles);
 
@@ -68,55 +70,59 @@ const Video = () => {
 
   return (
     <div className={cx("wrapper")}>
-      <div className={cx("video")}>
-        <ReactPlayer
-          ref={playerRef}
-          url={
-            "https://files.fullstack.edu.vn/f8-tiktok/videos/520-63516c43aeede.mp4"
-          }
-          playing={playing}
-          muted={muted}
-          controls={false}
-          onProgress={handleProgress}
-          loop={true}
-          width="100%"
-          height="100%"
-        />
-        <div className={cx("content")}>
-          <button onClick={handlePlayPause} className={cx("control-button")}>
-            {playing ? (
-              <FontAwesomeIcon icon={faPause} />
-            ) : (
-              <FontAwesomeIcon icon={faPlay} />
-            )}
-          </button>
+      <HeaderVideo />
+      <div className={cx("video-content")}>
+        <div className={cx("video")}>
+          <ReactPlayer
+            ref={playerRef}
+            url={
+              "https://files.fullstack.edu.vn/f8-tiktok/videos/520-63516c43aeede.mp4"
+            }
+            playing={playing}
+            muted={muted}
+            controls={false}
+            onProgress={handleProgress}
+            loop={true}
+            width="100%"
+            height="100%"
+          />
+          <div className={cx("content")}>
+            <button onClick={handlePlayPause} className={cx("control-button")}>
+              {playing ? (
+                <FontAwesomeIcon icon={faPause} />
+              ) : (
+                <FontAwesomeIcon icon={faPlay} />
+              )}
+            </button>
 
-          <div
-            className={cx("progress-bar")}
-            ref={progressRef}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-          >
             <div
-              className={cx("progress")}
-              style={{ width: `${played * 100}%` }}
-            ></div>
-            <div
-              className={cx("dot")}
-              style={{ left: `calc(${played * 100}%)` }}
-            ></div>
+              className={cx("progress-bar")}
+              ref={progressRef}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+            >
+              <div
+                className={cx("progress")}
+                style={{ width: `${played * 100}%` }}
+              ></div>
+              <div
+                className={cx("dot")}
+                style={{ left: `calc(${played * 100}%)` }}
+              ></div>
+            </div>
+
+            <button onClick={handleMuteUnmute} className={cx("control-button")}>
+              {muted ? (
+                <FontAwesomeIcon icon={faVolumeMute} />
+              ) : (
+                <FontAwesomeIcon icon={faVolumeDown} />
+              )}
+            </button>
           </div>
-
-          <button onClick={handleMuteUnmute} className={cx("control-button")}>
-            {muted ? (
-              <FontAwesomeIcon icon={faVolumeMute} />
-            ) : (
-              <FontAwesomeIcon icon={faVolumeDown} />
-            )}
-          </button>
         </div>
+        <ActionVideo />
       </div>
     </div>
   );
