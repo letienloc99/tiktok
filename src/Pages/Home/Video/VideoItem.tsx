@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, forwardRef, useImperativeHandle } from "react";
 import classNames from "classnames/bind";
 import styles from "./VideoItem.module.scss";
 import ReactPlayer from "react-player";
@@ -12,19 +12,26 @@ import {
 import ActionVideo from "./ActionVideo";
 import HeaderVideo from "./HeaderVideo";
 
+interface Props {
+  video: any;
+}
 const cx = classNames.bind(styles);
 
-const Video = () => {
-  const [playing, setPlaying] = useState(true);
+const Video = forwardRef(({ video }: Props, ref: any) => {
+  const [playing, setPlaying] = useState(false); // Khởi tạo video không phát
   const [muted, setMuted] = useState(false);
   const [played, setPlayed] = useState(0);
   const [seeking, setSeeking] = useState(false);
   const playerRef = useRef<ReactPlayer>(null);
   const progressRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    setPlaying(true);
-  }, []);
+  useImperativeHandle(ref, () => ({
+    play: () => {
+      setPlaying(true);
+      playerRef.current?.seekTo(0); // Đặt lại video về đầu khi phát lại
+    },
+    pause: () => setPlaying(false),
+  }));
 
   const handlePlayPause = () => {
     setPlaying(!playing);
@@ -70,14 +77,12 @@ const Video = () => {
 
   return (
     <div className={cx("wrapper")}>
-      <HeaderVideo />
+      <HeaderVideo video={video} />
       <div className={cx("video-content")}>
         <div className={cx("video")}>
           <ReactPlayer
             ref={playerRef}
-            url={
-              "https://files.fullstack.edu.vn/f8-tiktok/videos/520-63516c43aeede.mp4"
-            }
+            url={video.file_url}
             playing={playing}
             muted={muted}
             controls={false}
@@ -122,10 +127,10 @@ const Video = () => {
             </button>
           </div>
         </div>
-        <ActionVideo />
+        <ActionVideo video={video} />
       </div>
     </div>
   );
-};
+});
 
 export default Video;

@@ -8,32 +8,32 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentDots, faHeart } from "@fortawesome/free-solid-svg-icons";
 const cx = classNames.bind(styles);
-const ActionVideo = () => {
+const ActionVideo = ({ video }: { video: any }) => {
   return (
     <div className={cx("menu-action")}>
       <button className={cx("action-icon")}>
         <div className={cx("icon-btn")}>
           <FontAwesomeIcon icon={faHeart} className={cx("icon")} />
         </div>
-        <p>1.6M</p>
+        <p>{video.likes_count}</p>
       </button>
       <button className={cx("action-icon")}>
         <div className={cx("icon-btn")}>
           <FontAwesomeIcon icon={faCommentDots} className={cx("icon")} />
         </div>
-        <p>1.6M</p>
+        <p>{video.comments_count}</p>
       </button>
       <button className={cx("action-icon")}>
         <div className={cx("icon-btn")}>
           <FavoriteIcon />
         </div>
-        <p>1.6M</p>
+        <p>1.6</p>
       </button>
       <button className={cx("action-icon")}>
         <div className={cx("icon-btn")}>
           <ShareIcon />
         </div>
-        <p>1.6M</p>
+        <p>{video.shares_count}</p>
       </button>
       <button className={cx("action-icon")}>
         <div className={cx("icon-btn")}>
